@@ -1,0 +1,126 @@
+<nb-layout>
+
+  <nb-layout-header fixed>
+    <!-- Insert header here -->
+    <h1 class="text-center">User Form</h1>
+  </nb-layout-header>
+
+  <nb-layout-column>
+
+    <nb-card>
+      <nb-card-body class="example-items-col">
+        <form [formGroup]="reactiveFormGroup">
+          <div class="row">
+            <div class="col-md-6 mt-5">
+              <div class="form-control-group">
+                <label class="label my-required" for="fullName">Full Name</label>
+                <input type="text" nbInput fullWidth status="basic" placeholder="Enter your full name" id="fullName"
+                  formControlName="fullName" minlength="50" maxlength="50">
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.fullName.errors && reactiveFormControl.fullName.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.fullName.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6 mt-5">
+              <div class="form-control-group">
+                <label class="label my-required" for="email">Email</label>
+                <input type="text" nbInput fullWidth status="basic" placeholder="Enter your email" id="email"
+                  formControlName="email">
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.email.errors && reactiveFormControl.email.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.email.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6 my-5">
+              <div class="form-control-group">
+                <label class="label my-required" for="mobileNo">Mobile Number</label>
+                <input type="tel" nbInput fullWidth status="basic" placeholder="Enter your mobile number" id="mobileNo"
+                  formControlName="mobileNo" minlength="10" maxlength="10">
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.mobileNo.errors && reactiveFormControl.mobileNo.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.mobileNo.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6 my-5">
+              <div class="form-control-group">
+                <label class="label my-required" for="zipCode">Zip Code</label>
+                <input type="number" nbInput fullWidth status="basic" placeholder="Enter pin number" id="zipCode"
+                  formControlName="zipCode" minlength="5" maxlength="5">
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.zipCode.errors && reactiveFormControl.zipCode.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.zipCode.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-5">
+              <div class="form-control-group">
+                <label class="label my-required" for="age">Age</label>
+                <input type="number" nbInput fullWidth status="basic" placeholder="Enter your age" id="age"
+                  formControlName="age">
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.age.errors && reactiveFormControl.age.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.age.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-control-group">
+                <label class="label my-required" for="address">Address</label>
+                <textarea type="text" nbInput fullWidth status="basic" placeholder="Enter your address" id="address"
+                  formControlName="address"></textarea>
+                <span class="custom-error-text"
+                  *ngIf="(reactiveFormControl.address.errors && reactiveFormControl.address.dirty)">
+                  <span *ngFor="let err of getErrorForParticularField(reactiveFormGroup.controls.address.errors)">
+                    {{err}}
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #dialog let-data let-ref="dialogRef">
+            <nb-card>
+              <nb-card-header>User Details</nb-card-header>
+              <nb-card-body>
+                <p>Full Name : {{data.fullName}}</p>
+                <p>Email : {{data.email}}</p>
+                <p>Mobile Number : {{data.mobileNo}}</p>
+                <p>Zip Code : {{data.zipCode}}</p>
+                <p>Age : {{data.age}}</p>
+              </nb-card-body>
+              <nb-card-footer class="text-center">
+                <button nbButton status="primary" (click)="ref.close()">Close</button>
+              </nb-card-footer>
+            </nb-card>
+          </ng-template>
+
+          <div class="text-center my-5">
+            <button nbButton status="primary" (click)="open(dialog, reactiveFormGroup.value)">Submit</button>
+          </div>
+
+        </form>
+      </nb-card-body>
+    </nb-card>
+
+    <!-- <router-outlet></router-outlet> -->
+
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+
+</nb-layout>

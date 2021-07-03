@@ -1,0 +1,20 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+/* You can add global styles to this file, and also import other style files */
+.custom-error-text {
+  color: #d11124;
+  font-size: 0.8rem;
+}
+.custom-error-text span {
+  // Hidden by default
+  display: none;
+}
+.custom-error-text span:first-child {
+  display: block;
+  margin: .3rem;
+}
